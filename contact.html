@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Swift Operations</title>
+<meta name="description" content="Have a question or want to book a free consultation? Send us a message and we will be in touch.">
+<link rel="canonical" href="https://www.swiftoperations.com.au/contact">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav class="nav"><div class="wrap nav-inner">
+  <a class="logo" href="/">Swift <span>Operations</span></a>
+  <button class="nav-toggle" aria-label="Menu">Menu</button>
+  <div class="nav-links">
+    <a href="/">Home</a><a href="/services">Services</a><a href="/about">About</a><a href="/insights">Insights</a><a href="/contact">Contact</a>
+    <a class="btn primary small" href="https://form.swiftoperations.com.au">Book a free consultation</a>
+  </div>
+</div></nav>
+
+<header class="hero" style="padding-bottom:30px"><div class="wrap">
+  <div class="eyebrow">Contact us</div>
+  <h1>Have a question or want to book a free consultation?</h1>
+  <p class="lead">Fill out the form below and we will be in touch. If you would rather give us the full picture straight away, the <a href="https://form.swiftoperations.com.au">free admin audit form</a> takes about five minutes.</p>
+</div></header>
+
+<section class="tight"><div class="wrap grid grid-2">
+  <div class="card">
+    <form id="contactForm">
+      <label>Your name<input name="Your name" required maxlength="100"></label>
+      <label>Business name<input name="Business name" maxlength="120"></label>
+      <label>Email<input type="email" name="Email" required maxlength="120"></label>
+      <label>Phone<input name="Phone" maxlength="30"></label>
+      <label>What do you need help with?<textarea name="Anything else you'd like us to know?" rows="5" required maxlength="2000"></textarea></label>
+      <button class="btn primary" type="submit" id="sendBtn">Send message</button>
+      <div class="notice" id="ok" hidden>Thanks, we have your message. We reply within one business day.</div>
+      <div class="notice" id="err" hidden style="border-color:#F87171">Something went wrong. Email us at <a href="mailto:info@swiftoperations.com.au">info@swiftoperations.com.au</a>.</div>
+    </form>
+  </div>
+  <div>
+    <div class="card" style="margin-bottom:16px"><h3>Email</h3><p><a href="mailto:info@swiftoperations.com.au">info@swiftoperations.com.au</a></p></div>
+    <div class="card" style="margin-bottom:16px"><h3>Hours</h3><p>Monday to Friday, 8am to 5pm AEST. Everything runs online, with on-site visits available around Brisbane and the Sunshine Coast.</p></div>
+    <div class="card"><h3>Existing clients</h3><p>Log requests and check progress on your <a href="https://desk.swiftoperations.com.au">client desk</a>.</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap foot-inner">
+  <div><strong style="color:var(--white)">Swift Operations</strong><br>ABN 65 805 531 455<br><a href="mailto:info@swiftoperations.com.au">info@swiftoperations.com.au</a></div>
+  <div class="foot-links"><a href="/services">Services</a><a href="/about">About</a><a href="/insights">Insights</a><a href="/contact">Contact</a><a href="/privacy">Privacy Policy</a><a href="https://www.facebook.com/profile.php?id=61588880969624" rel="noopener">Facebook</a></div>
+</div></footer>
+<script src="site.js"></script>
+<script>
+(function () {
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzEzG0ktlQODouCp3qCLv5N3CmTUlbOY9o3j6FGFTpouMpPC8dHMSWXmwqHK7DjyfMz/exec';
+  var f = document.getElementById('contactForm'), btn = document.getElementById('sendBtn');
+  f.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    btn.disabled = true; btn.textContent = 'Sending...';
+    var data = {};
+    f.querySelectorAll('[name]').forEach(function (el) { data[el.name] = el.value; });
+    data['What does your business do?'] = 'Contact form enquiry';
+    data['Budget and Timeline'] = 'Contact form';
+    try {
+      await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+      f.reset(); document.getElementById('ok').hidden = false; btn.textContent = 'Sent';
+    } catch (err) {
+      document.getElementById('err').hidden = false; btn.disabled = false; btn.textContent = 'Send message';
+    }
+  });
+})();
+</script>
+</body>
+</html>
