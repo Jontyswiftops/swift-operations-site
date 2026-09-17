@@ -3,3 +3,5 @@
 /new-page /privacy 301
 /insights/category/* /insights 301
 /insights/tag/* /insights 301
+/form /audit 301
+/audit/ /audit 301

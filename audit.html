@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free consultation | Swift Operations</title>
+<meta name="description" content="Tell us a bit about your business and what is eating your time. We will come back within one business day with what we would fix first.">
+<link rel="canonical" href="https://www.swiftoperations.com.au/audit">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  .form-wrap { max-width: 640px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+  @media (max-width: 600px) { .field-row { grid-template-columns: 1fr; } }
+  .hint { font-size: 13px; color: var(--text-dim); margin-top: -6px; margin-bottom: 14px; }
+  .success { display: none; text-align: center; padding: 30px 10px; }
+  .success.show { display: block; }
+  .success .tick { width: 56px; height: 56px; border-radius: 50%; background: var(--accent-dim); border: 2px solid var(--accent); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; }
+  .success .tick svg { width: 26px; height: 26px; stroke: var(--accent); stroke-width: 3; fill: none; }
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap nav-inner">
+  <a class="logo" href="/">Swift <span>Operations</span></a>
+  <button class="nav-toggle" aria-label="Menu">Menu</button>
+  <div class="nav-links">
+    <a href="/">Home</a><a href="/services">Services</a><a href="/about">About</a><a href="/insights">Insights</a><a href="/contact">Contact</a>
+  </div>
+</div></nav>
+
+<header class="hero" style="padding-bottom:20px"><div class="wrap form-wrap">
+  <div class="eyebrow">Free consultation</div>
+  <h1>Tell us what is eating your time</h1>
+  <p class="lead">Two minutes. We read every one personally and come back within one business day with what we would fix first and roughly what it would cost. No obligation.</p>
+</div></header>
+
+<section class="tight"><div class="wrap form-wrap">
+  <div class="card">
+    <form id="auditForm" novalidate>
+      <div class="field-row">
+        <label>Your name<input name="Your name" required maxlength="100" autocomplete="name"></label>
+        <label>Business name<input name="Business name" required maxlength="120" autocomplete="organization"></label>
+      </div>
+      <div class="field-row">
+        <label>Email<input type="email" name="Email" required maxlength="120" autocomplete="email"></label>
+        <label>Phone<input type="tel" name="Phone" maxlength="30" autocomplete="tel"></label>
+      </div>
+      <label>What does your business do?
+        <select name="What does your business do?" required>
+          <option value="" disabled selected>Select your industry</option>
+          <option>Trades and Construction</option>
+          <option>Professional Services (Legal, Accounting, Consulting)</option>
+          <option>Health and Allied Health</option>
+          <option>Retail and E-commerce</option>
+          <option>Hospitality and Food</option>
+          <option>Real Estate and Property</option>
+          <option>Transport and Logistics</option>
+          <option>IT and Technology</option>
+          <option>Education and Training</option>
+          <option>Not-for-Profit</option>
+          <option>Other</option>
+        </select>
+      </label>
+      <label>What do you want sorted?
+        <textarea name="Anything else you'd like us to know?" rows="6" required maxlength="3000" placeholder="In your own words. What is slow, what is manual, what breaks, what you wish just happened. Mention the software you use if you know it."></textarea>
+      </label>
+      <div class="hint">The more specific the better, but rough is fine. We will ask the rest on the call.</div>
+      <label>When do you want this sorted?
+        <select name="When do you want this sorted?">
+          <option>ASAP</option>
+          <option selected>In the next month</option>
+          <option>In the next few months</option>
+          <option>Just exploring for now</option>
+        </select>
+      </label>
+      <button class="btn primary" type="submit" id="submitBtn" style="width:100%;margin-top:6px">Send it through</button>
+      <div class="notice" id="err" hidden style="border-color:#F87171">Something went wrong. Email us at <a href="mailto:info@swiftoperations.com.au">info@swiftoperations.com.au</a> and we will sort it.</div>
+      <p class="hint" style="margin-top:14px">Your details are only used to reply to you. <a href="/privacy">Privacy policy</a>.</p>
+    </form>
+    <div class="success" id="successMsg">
+      <div class="tick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <h2>Thanks, we are on it</h2>
+      <p class="lead">We have your details. You will hear from us within one business day.</p>
+      <p style="margin-top:20px"><a class="btn" href="/">Back to the site</a></p>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap foot-inner">
+  <div><strong style="color:var(--white)">Swift Operations</strong><br>ABN 65 805 531 455<br><a href="mailto:info@swiftoperations.com.au">info@swiftoperations.com.au</a></div>
+  <div class="foot-links"><a href="/services">Services</a><a href="/about">About</a><a href="/insights">Insights</a><a href="/contact">Contact</a><a href="/privacy">Privacy Policy</a></div>
+</div></footer>
+<script src="/site.js"></script>
+<script>
+(function () {
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzEzG0ktlQODouCp3qCLv5N3CmTUlbOY9o3j6FGFTpouMpPC8dHMSWXmwqHK7DjyfMz/exec';
+  var form = document.getElementById('auditForm'), btn = document.getElementById('submitBtn');
+  var KEYS = ['Your name', 'Business name', 'Email', 'Phone', 'What does your business do?', 'How many staff?', 'Your role', 'Which admin tasks take up the most time?', 'Roughly how many hours per week does admin take?', 'If you could wave a magic wand and fix one thing about how your business runs day-to-day, what would it be?', 'What tools or software do you currently use?', 'If you selected industry-specific software, what is it?', 'How happy are you with your current tools?', 'Are you open to adopting new software if it saves you significant time?', 'Budget and Timeline', 'When do you want this sorted?', 'What tasks do you find yourself doing over and over that you wish happened automatically?', "Anything else you'd like us to know?"];
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var required = form.querySelectorAll('[required]'), ok = true;
+    required.forEach(function (el) { if (!el.value.trim()) { ok = false; el.style.borderColor = '#F87171'; } else el.style.borderColor = ''; });
+    var email = form.querySelector('[name="Email"]');
+    if (email.value && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)) { ok = false; email.style.borderColor = '#F87171'; }
+    if (!ok) return;
+    btn.disabled = true; btn.textContent = 'Sending...';
+    var data = { source: 'website' };
+    KEYS.forEach(function (k) { var el = form.querySelector('[name="' + k.replace(/"/g, '\\"') + '"]'); data[k] = el ? el.value : ''; });
+    try {
+      await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+      form.style.display = 'none';
+      document.getElementById('successMsg').classList.add('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (err) {
+      document.getElementById('err').hidden = false; btn.disabled = false; btn.textContent = 'Send it through';
+    }
+  });
+})();
+</script>
+</body>
+</html>
