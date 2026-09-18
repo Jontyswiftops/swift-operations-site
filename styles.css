@@ -1,18 +1,18 @@
 :root {
-  --bg: #FFFFFF;
-  --bg-alt: #F5F7FA;
+  --bg: #FBFAF7;
+  --bg-alt: #F3F1EB;
   --surface: #FFFFFF;
-  --surface-2: #F8FAFC;
-  --border: #E2E6EC;
-  --text: #1B2430;
-  --text-muted: #5C6774;
-  --text-dim: #8A94A3;
-  --navy: #14304F;
-  --accent: #1D5FD1;
-  --accent-hover: #174CAB;
-  --accent-dim: #E8F0FD;
+  --surface-2: #F8F6F1;
+  --border: #E6E2D8;
+  --text: #23272E;
+  --text-muted: #5F6570;
+  --text-dim: #8B9097;
+  --navy: #1F2A37;
+  --accent: #B7791F;
+  --accent-hover: #96621A;
+  --accent-dim: #FBF3E4;
   --white: #FFFFFF;
-  --shadow: 0 1px 2px rgba(20, 48, 79, 0.04), 0 6px 20px rgba(20, 48, 79, 0.06);
+  --shadow: 0 1px 2px rgba(31,42,55,.04), 0 8px 24px rgba(31,42,55,.05);
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -21,9 +21,9 @@ a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 img { max-width: 100%; }
 .wrap { max-width: 1080px; margin: 0 auto; padding-inline: 20px; }
-h1, h2, h3 { font-family: 'Inter', system-ui, sans-serif; color: var(--navy); line-height: 1.18; letter-spacing: -0.02em; }
-h1 { font-size: clamp(32px, 4.6vw, 48px); font-weight: 800; }
-h2 { font-size: clamp(24px, 3.2vw, 34px); font-weight: 700; margin-bottom: 14px; }
+h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; color: var(--navy); line-height: 1.18; letter-spacing: -0.02em; }
+h1 { font-size: clamp(34px, 4.8vw, 52px); font-weight: 600; letter-spacing: -0.01em; }
+h2 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 600; letter-spacing: -0.01em; margin-bottom: 14px; }
 h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em; }
 p { color: var(--text-muted); }
 .lead { font-size: 18px; color: var(--text); }
@@ -113,3 +113,13 @@ footer { background: var(--navy); color: #C9D3E0; padding-block: 40px; margin-to
 
 /* honeypot field for the forms, hidden from people */
 .hp{position:absolute;left:-9999px;top:-9999px;height:0;width:0;overflow:hidden;opacity:0}
+
+/* warm editorial theme */
+.logo { font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 21px; }
+.btn.primary { background: var(--navy); border-color: var(--navy); }
+.btn.primary:hover { background: #2C3A4B; border-color: #2C3A4B; }
+.tag { background: var(--navy); }
+.plan.featured { border-color: var(--navy); box-shadow: 0 0 0 1px var(--navy), var(--shadow); }
+.plan .price { font-family: 'Fraunces', Georgia, serif; font-weight: 600; }
+.card { border-radius: 8px; }
+footer { background: #1F2A37; }
