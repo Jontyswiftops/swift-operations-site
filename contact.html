@@ -30,11 +30,12 @@
 <section class="tight"><div class="wrap grid grid-2">
   <div class="card">
     <form id="contactForm">
-      <label>Your name<input name="Your name" required maxlength="100"></label>
-      <label>Business name<input name="Business name" maxlength="120"></label>
-      <label>Email<input type="email" name="Email" required maxlength="120"></label>
-      <label>Phone<input name="Phone" maxlength="30"></label>
-      <label>What do you need help with?<textarea name="Anything else you'd like us to know?" rows="5" required maxlength="2000"></textarea></label>
+      <label>Your name<input name="name" required maxlength="100" autocomplete="name"></label>
+      <label>Business name<input name="business" maxlength="120" autocomplete="organization"></label>
+      <label>Email<input type="email" name="email" required maxlength="120" autocomplete="email"></label>
+      <label>Phone<input name="phone" maxlength="30" autocomplete="tel"></label>
+      <label>What do you need help with?<textarea name="description" rows="5" required maxlength="2000"></textarea></label>
+      <label class="hp" aria-hidden="true">Website<input name="hp" tabindex="-1" autocomplete="off"></label>
       <button class="btn primary" type="submit" id="sendBtn">Send message</button>
       <div class="notice" id="ok" hidden>Thanks, we have your message. We reply within one business day.</div>
       <div class="notice" id="err" hidden style="border-color:#F87171">Something went wrong. Email us at <a href="mailto:info@swiftoperations.com.au">info@swiftoperations.com.au</a>.</div>
@@ -54,17 +55,15 @@
 <script src="site.js"></script>
 <script>
 (function () {
-  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzEzG0ktlQODouCp3qCLv5N3CmTUlbOY9o3j6FGFTpouMpPC8dHMSWXmwqHK7DjyfMz/exec';
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwmiGGJNYfEtgkO6bHTvfnf67Ue00KdFQwb51pvhG5bE6_pGBkCHP06xRxA__cS6Wft/exec';
   var f = document.getElementById('contactForm'), btn = document.getElementById('sendBtn');
   f.addEventListener('submit', async function (e) {
     e.preventDefault();
     btn.disabled = true; btn.textContent = 'Sending...';
-    var data = {};
+    var data = { action: 'lead', source: 'contact', industry: '', timing: '' };
     f.querySelectorAll('[name]').forEach(function (el) { data[el.name] = el.value; });
-    data['What does your business do?'] = 'Contact form enquiry';
-    data['Budget and Timeline'] = 'Contact form';
     try {
-      await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+      await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(data) });
       f.reset(); document.getElementById('ok').hidden = false; btn.textContent = 'Sent';
     } catch (err) {
       document.getElementById('err').hidden = false; btn.disabled = false; btn.textContent = 'Send message';

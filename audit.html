@@ -40,15 +40,15 @@
   <div class="card">
     <form id="auditForm" novalidate>
       <div class="field-row">
-        <label>Your name<input name="Your name" required maxlength="100" autocomplete="name"></label>
-        <label>Business name<input name="Business name" required maxlength="120" autocomplete="organization"></label>
+        <label>Your name<input name="name" required maxlength="100" autocomplete="name"></label>
+        <label>Business name<input name="business" required maxlength="120" autocomplete="organization"></label>
       </div>
       <div class="field-row">
-        <label>Email<input type="email" name="Email" required maxlength="120" autocomplete="email"></label>
-        <label>Phone<input type="tel" name="Phone" maxlength="30" autocomplete="tel"></label>
+        <label>Email<input type="email" name="email" required maxlength="120" autocomplete="email"></label>
+        <label>Phone<input type="tel" name="phone" maxlength="30" autocomplete="tel"></label>
       </div>
       <label>What does your business do?
-        <select name="What does your business do?" required>
+        <select name="industry" required>
           <option value="" disabled selected>Select your industry</option>
           <option>Trades and Construction</option>
           <option>Professional Services (Legal, Accounting, Consulting)</option>
@@ -64,17 +64,18 @@
         </select>
       </label>
       <label>What do you want sorted?
-        <textarea name="Anything else you'd like us to know?" rows="6" required maxlength="3000" placeholder="In your own words. What is slow, what is manual, what breaks, what you wish just happened. Mention the software you use if you know it."></textarea>
+        <textarea name="description" rows="6" required maxlength="3000" placeholder="In your own words. What is slow, what is manual, what breaks, what you wish just happened. Mention the software you use if you know it."></textarea>
       </label>
       <div class="hint">The more specific the better, but rough is fine. We will ask the rest when we get back to you.</div>
       <label>When do you want this sorted?
-        <select name="When do you want this sorted?">
+        <select name="timing">
           <option>ASAP</option>
           <option selected>In the next month</option>
           <option>In the next few months</option>
           <option>Just exploring for now</option>
         </select>
       </label>
+      <label class="hp" aria-hidden="true">Website<input name="hp" tabindex="-1" autocomplete="off"></label>
       <button class="btn primary" type="submit" id="submitBtn" style="width:100%;margin-top:6px">Send it through</button>
       <div class="notice" id="err" hidden style="border-color:#F87171">Something went wrong. Email us at <a href="mailto:info@swiftoperations.com.au">info@swiftoperations.com.au</a> and we will sort it.</div>
       <p class="hint" style="margin-top:14px">Your details are only used to reply to you. <a href="/privacy">Privacy policy</a>.</p>
@@ -95,21 +96,20 @@
 <script src="/site.js"></script>
 <script>
 (function () {
-  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzEzG0ktlQODouCp3qCLv5N3CmTUlbOY9o3j6FGFTpouMpPC8dHMSWXmwqHK7DjyfMz/exec';
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwmiGGJNYfEtgkO6bHTvfnf67Ue00KdFQwb51pvhG5bE6_pGBkCHP06xRxA__cS6Wft/exec';
   var form = document.getElementById('auditForm'), btn = document.getElementById('submitBtn');
-  var KEYS = ['Your name', 'Business name', 'Email', 'Phone', 'What does your business do?', 'How many staff?', 'Your role', 'Which admin tasks take up the most time?', 'Roughly how many hours per week does admin take?', 'If you could wave a magic wand and fix one thing about how your business runs day-to-day, what would it be?', 'What tools or software do you currently use?', 'If you selected industry-specific software, what is it?', 'How happy are you with your current tools?', 'Are you open to adopting new software if it saves you significant time?', 'Budget and Timeline', 'When do you want this sorted?', 'What tasks do you find yourself doing over and over that you wish happened automatically?', "Anything else you'd like us to know?"];
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
     var required = form.querySelectorAll('[required]'), ok = true;
     required.forEach(function (el) { if (!el.value.trim()) { ok = false; el.style.borderColor = '#F87171'; } else el.style.borderColor = ''; });
-    var email = form.querySelector('[name="Email"]');
+    var email = form.querySelector('[name="email"]');
     if (email.value && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)) { ok = false; email.style.borderColor = '#F87171'; }
     if (!ok) return;
     btn.disabled = true; btn.textContent = 'Sending...';
-    var data = { source: 'website' };
-    KEYS.forEach(function (k) { var el = form.querySelector('[name="' + k.replace(/"/g, '\\"') + '"]'); data[k] = el ? el.value : ''; });
+    var data = { action: 'lead', source: 'website' };
+    ['name', 'business', 'email', 'phone', 'industry', 'description', 'timing', 'hp'].forEach(function (k) { var el = form.querySelector('[name="' + k + '"]'); data[k] = el ? el.value : ''; });
     try {
-      await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+      await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(data) });
       form.style.display = 'none';
       document.getElementById('successMsg').classList.add('show');
       window.scrollTo({ top: 0, behavior: 'smooth' });

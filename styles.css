@@ -104,3 +104,6 @@ footer { border-top: 1px solid var(--border); padding-block: 36px; margin-top: 4
 .foot-inner a { color: var(--text-muted); }
 .foot-inner a:hover { color: var(--white); }
 .foot-links { display: flex; gap: 18px; flex-wrap: wrap; }
+
+/* honeypot field for the forms, hidden from people */
+.hp{position:absolute;left:-9999px;top:-9999px;height:0;width:0;overflow:hidden;opacity:0}
