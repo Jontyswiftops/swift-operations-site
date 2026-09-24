@@ -124,3 +124,7 @@ footer { background: var(--navy); color: #C9D3E0; padding-block: 40px; margin-to
 .plan .price { font-family: 'Fraunces', Georgia, serif; font-weight: 600; }
 .card { border-radius: 8px; }
 footer { background: #1F2A37; }
+
+/* lists inside cards (pricing and rules) */
+.card ul { margin: 10px 0 0 18px; padding: 0; color: var(--text-muted); font-size: 15px; }
+.card li { margin: 6px 0; }
