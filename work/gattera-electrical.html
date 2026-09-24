@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gattera Electrical case study | Swift Operations</title>
+<meta name="description" content="How we built Gattera Electrical one system from the first quote request to tax time: website, online quotes with photos, a job book, safety and compliance records, and an expense logger. Built on Google, with no extra subscription.">
+<link rel="canonical" href="https://www.swiftoperations.com.au/work/gattera-electrical">
+<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="/favicon.png" type="image/png" sizes="192x192"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20260925a">
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "6ed43d34957a49fcb90ec8e43f7db523"}'></script>
+<style>
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 30px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); }
+  .facts div { padding: 16px 18px; border-right: 1px solid var(--border); }
+  .facts div:last-child { border-right: none; }
+  .facts b { display: block; font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 4px; font-weight: 700; }
+  .facts span { font-size: 15px; color: var(--text); }
+  @media (max-width: 800px) { .facts { grid-template-columns: 1fr 1fr; } .facts div:nth-child(2) { border-right: none; } .facts div:nth-child(-n+2) { border-bottom: 1px solid var(--border); } }
+  .shot { margin: 0; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--surface); box-shadow: var(--shadow); }
+  .shot .bar { display: flex; gap: 6px; align-items: center; padding: 10px 14px; border-bottom: 1px solid var(--border); background: var(--bg-alt); font-size: 12px; color: var(--text-dim); }
+  .shot .bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--border); display: inline-block; }
+  .shot .bar span { margin-left: 8px; }
+  .shot img { display: block; width: 100%; height: auto; }
+  .shot figcaption { padding: 10px 14px; font-size: 13px; color: var(--text-dim); border-top: 1px solid var(--border); }
+  .split { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: start; margin-top: 24px; }
+  @media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
+  .steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
+  .steps li { counter-increment: s; position: relative; padding: 0 0 22px 52px; }
+  .steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 34px; height: 34px; border-radius: 50%; background: var(--navy); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+  .steps h3 { margin: 4px 0 4px; font-size: 18px; }
+  .steps p { margin: 0; color: var(--text-muted); font-size: 15px; }
+  .ticks { list-style: none; margin: 14px 0 0; padding: 0; }
+  .ticks li { position: relative; padding-left: 26px; margin: 9px 0; color: var(--text); font-size: 15px; }
+  .ticks li::before { content: ''; position: absolute; left: 2px; top: 6px; width: 10px; height: 6px; border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: rotate(-45deg); }
+  .card h3 { margin-top: 0; }
+  .quote { margin: 0 auto; max-width: 820px; text-align: center; }
+  .quote p { font-family: 'Fraunces', Georgia, serif; font-size: 25px; line-height: 1.45; color: var(--text); margin: 0; }
+  .quote cite { display: block; margin-top: 18px; font-style: normal; font-size: 14px; color: var(--text-dim); }
+  .quote cite b { color: var(--text); font-weight: 600; }
+  @media (max-width: 760px) { .quote p { font-size: 20px; } }
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap nav-inner">
+  <a class="logo" href="/">Swift <span>Operations</span></a>
+  <button class="nav-toggle" aria-label="Menu">Menu</button>
+  <div class="nav-links">
+    <a href="/">Home</a><a href="/services">Services</a><a href="/work/gattera-electrical">Our work</a><a href="/about">About</a><a href="/insights">Insights</a><a href="/contact">Contact</a>
+    <a class="btn small" href="https://desk.swiftoperations.com.au">Client login</a>
+    <a class="btn primary small" href="/audit">Book a free consultation</a>
+  </div>
+</div></nav>
+
+<header class="hero" style="padding-bottom:48px"><div class="wrap">
+  <div class="eyebrow">Our work · Case study</div>
+  <h1>Gattera Electrical: one system from the first quote request to tax time</h1>
+  <p class="lead">Jarid Gattera is a licensed electrician working across the Sunshine Coast and South East Queensland. He wanted customers to find him, request a quote without phone tag, and have the jobs, paperwork and receipts all in one place. We built it from scratch, on his own domain, with no extra software subscription.</p>
+  <div class="hero-actions">
+    <a class="btn primary" href="/audit">Talk to us about your business</a>
+    <a class="btn" href="https://gatteraelectrical.com.au" target="_blank" rel="noopener">See the live site</a>
+  </div>
+  <div class="facts">
+    <div><b>Client</b><span>Gattera Electrical Services</span></div>
+    <div><b>Industry</b><span>Electrical trade</span></div>
+    <div><b>Area</b><span>Sunshine Coast and SEQ</span></div>
+    <div><b>Built</b><span>From scratch, on Google</span></div>
+  </div>
+</div></header>
+
+<section><div class="wrap">
+  <figure class="shot">
+    <div class="bar"><i></i><i></i><i></i><span>gatteraelectrical.com.au</span></div>
+    <img src="/work/img/gattera-home.png" width="1280" height="860" alt="The Gattera Electrical homepage, with Get a quote online and Call buttons">
+    <figcaption>The website. Every page leads to one of two things: request a quote online, or call.</figcaption>
+  </figure>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <div class="eyebrow">What we built</div>
+  <h2>Four parts, working as one system</h2>
+  <div class="grid grid-2" style="margin-top:24px">
+    <div class="card"><span class="num">01</span><h3>A website that brings in work</h3><p>A fast, mobile-first site with its own pages for the suburbs Jarid services, including Beerwah, Caloundra, Landsborough and Maleny, plus a page for smoke alarm installation. Click to call throughout, and a link to his Google reviews.</p></div>
+    <div class="card"><span class="num">02</span><h3>Online quote requests</h3><p>Customers describe the job on their phone in a couple of minutes, with photos, suburb, postcode, property type, urgency and the best time to call. It lands in Jarid's system complete, not as a missed call.</p></div>
+    <div class="card"><span class="num">03</span><h3>The Job Book</h3><p>Every job in one place. Quotes with line items that customers accept in one tap, booking confirmations, day-before reminders, job notes with photos, and a weekly summary by email.</p></div>
+    <div class="card"><span class="num">04</span><h3>Expenses and tax time</h3><p>Snap a receipt and it is logged with the GST. Money in against money out over six months, reminders before licences and insurance expire, and a tax time summary for this year and last.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">For his customers</div>
+  <h2>Three steps, no phone tag</h2>
+  <div class="split">
+    <ol class="steps">
+      <li><h3>Tell us about the job online</h3><p>A short form on their phone, with photos of the job and the postcode, so Jarid knows what he is walking into.</p></li>
+      <li><h3>The quote lands in their inbox</h3><p>Jarid calls back, then sends a written quote by email. The customer accepts it with one tap.</p></li>
+      <li><h3>Booked in, reminded, done</h3><p>A booking confirmation, a reminder the day before, and a receipt when it is paid. All of it sends on its own.</p></li>
+    </ol>
+    <figure class="shot">
+      <div class="bar"><i></i><i></i><i></i><span>Online quote request</span></div>
+      <img src="/work/img/gattera-quote.png" width="640" height="860" alt="The Gattera Electrical online quote request form" loading="lazy">
+    </figure>
+  </div>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <div class="split" style="margin-top:0">
+    <div>
+      <div class="eyebrow">For Jarid</div>
+      <h2>The back office, sorted</h2>
+      <ul class="ticks">
+        <li>Every job, quote and booking in one place, on his phone or laptop.</li>
+        <li>Quotes built from line items and accepted by the customer in one tap.</li>
+        <li>Confirmations and reminders that send themselves.</li>
+        <li>Job notes and photos kept against the job.</li>
+        <li>Safety records for pre-start checks and high-risk work.</li>
+        <li>Smoke alarm compliance certificates, produced from the job.</li>
+        <li>Receipts, GST and a tax time summary ready for the accountant.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>How it is built</h3>
+      <p>The whole back office runs on Google, so there is no monthly software fee on top. The website sits on his own domain.</p>
+      <p style="margin-top:12px">Everything lives in his accounts and belongs to him. It was built for one fixed price, and it is his to keep.</p>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <blockquote class="quote">
+    <p>&ldquo;Very happy with the outcome. It has made quoting and following up leads that much easier, with simple clicks of buttons and one place to view all my data. I wanted something that was easy to navigate and work with, as I found I was spending too much time manually doing everything beforehand.&rdquo;</p>
+    <cite><b>Jarid Gattera</b>, Gattera Electrical Services</cite>
+  </blockquote>
+</div></section>
+
+<section class="tight band"><div class="wrap" style="text-align:center">
+  <h2>Could this work for your business?</h2>
+  <p class="lead" style="max-width:680px;margin-inline:auto">Every business is different, so we never sell a template. In a free consultation we look at how you run things and tell you what we would build, and what it would cost as a fixed price.</p>
+  <p style="margin-top:22px"><a class="btn primary" href="/audit">Book a free consultation</a></p>
+</div></section>
+
+<footer><div class="wrap foot-inner">
+  <div><strong style="color:var(--white)">Swift Operations</strong><br>ABN 65 805 531 455<br><a href="mailto:info@swiftoperations.com.au">info@swiftoperations.com.au</a></div>
+  <div class="foot-links"><a href="/services">Services</a><a href="/work/gattera-electrical">Our work</a><a href="/about">About</a><a href="/insights">Insights</a><a href="/contact">Contact</a><a href="https://desk.swiftoperations.com.au">Client login</a><a href="/privacy">Privacy Policy</a><a href="https://www.facebook.com/profile.php?id=61588880969624" rel="noopener">Facebook</a></div>
+</div></footer>
+<script src="/site.js"></script>
+</body>
+</html>
