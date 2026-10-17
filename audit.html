@@ -119,7 +119,8 @@
     if (email.value && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)) { ok = false; email.style.borderColor = '#F87171'; }
     if (!ok) return;
     btn.disabled = true; btn.textContent = 'Sending...';
-    var data = { action: 'lead', source: 'website' };
+    var src = (new URLSearchParams(location.search).get('src') || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 20);
+    var data = { action: 'lead', source: src || 'website' };
     ['name', 'business', 'email', 'phone', 'industry', 'description', 'timing', 'hp'].forEach(function (k) { var el = form.querySelector('[name="' + k + '"]'); data[k] = el ? el.value : ''; });
     try {
       await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(data) });
