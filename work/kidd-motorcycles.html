@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kidd Motorcycles case study | Swift Operations</title>
+<meta name="description" content="How we built Kidd Motorcycles a new website, online drop-off booking, a private job page for every customer, phone quote approvals and a workshop app for Dean, all on his own domain.">
+<link rel="canonical" href="https://www.swiftoperations.com.au/work/kidd-motorcycles">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Swift Operations">
+<meta property="og:title" content="Kidd Motorcycles case study | Swift Operations">
+<meta property="og:description" content="How we built Kidd Motorcycles a new website, online drop-off booking, a private job page for every customer, phone quote approvals and a workshop app for Dean.">
+<meta property="og:url" content="https://www.swiftoperations.com.au/work/kidd-motorcycles">
+<meta property="og:image" content="https://www.swiftoperations.com.au/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Swift Operations: business systems built for Australian businesses">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.swiftoperations.com.au/brand/og-image.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="/favicon.png" type="image/png" sizes="192x192"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=20261020a">
+<style>
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 30px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); }
+  .facts div { padding: 16px 18px; border-right: 1px solid var(--border); }
+  .facts div:last-child { border-right: none; }
+  .facts b { display: block; font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 4px; font-weight: 700; }
+  .facts span { font-size: 15px; color: var(--text); }
+  @media (max-width: 800px) { .facts { grid-template-columns: 1fr 1fr; } .facts div:nth-child(2) { border-right: none; } .facts div:nth-child(-n+2) { border-bottom: 1px solid var(--border); } }
+  .shot { margin: 0; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--surface); box-shadow: var(--shadow); }
+  .shot .bar { display: flex; gap: 6px; align-items: center; padding: 10px 14px; border-bottom: 1px solid var(--border); background: var(--bg-alt); font-size: 12px; color: var(--text-dim); }
+  .shot .bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--border); display: inline-block; }
+  .shot .bar span { margin-left: 8px; }
+  .shot img { display: block; width: 100%; height: auto; }
+  .shot figcaption { padding: 10px 14px; font-size: 13px; color: var(--text-dim); border-top: 1px solid var(--border); }
+  .split { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: start; margin-top: 24px; }
+  @media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
+  .steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
+  .steps li { counter-increment: s; position: relative; padding: 0 0 22px 52px; }
+  .steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 34px; height: 34px; border-radius: 50%; background: var(--navy); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+  .steps h3 { margin: 4px 0 4px; font-size: 18px; }
+  .steps p { margin: 0; color: var(--text-muted); font-size: 15px; }
+  .ticks { list-style: none; margin: 14px 0 0; padding: 0; }
+  .ticks li { position: relative; padding-left: 26px; margin: 9px 0; color: var(--text); font-size: 15px; }
+  .ticks li::before { content: ''; position: absolute; left: 2px; top: 6px; width: 10px; height: 6px; border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: rotate(-45deg); }
+  .card h3 { margin-top: 0; }
+  .quote { margin: 0 auto; max-width: 820px; text-align: center; }
+  .quote p { font-family: 'Fraunces', Georgia, serif; font-size: 25px; line-height: 1.45; color: var(--text); margin: 0; }
+  .quote cite { display: block; margin-top: 18px; font-style: normal; font-size: 14px; color: var(--text-dim); }
+  .quote cite b { color: var(--text); font-weight: 600; }
+  @media (max-width: 760px) { .quote p { font-size: 20px; } }
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap nav-inner">
+  <a class="logo" href="/">Swift <span>Operations</span></a>
+  <button class="nav-toggle" aria-label="Menu">Menu</button>
+  <div class="nav-links">
+    <a href="/">Home</a><a href="/services">Services</a><a href="/work/">Our work</a><a href="/about">About</a><a href="/insights">Insights</a><a href="/contact">Contact</a>
+    <a class="btn small" href="https://desk.swiftoperations.com.au">Client login</a>
+    <a class="btn primary small" href="/audit">Book a free consultation</a>
+  </div>
+</div></nav>
+
+<header class="hero" style="padding-bottom:48px"><div class="wrap">
+  <div class="eyebrow">Our work · Case study</div>
+  <h1>Kidd Motorcycles: bookings, quotes and job updates without the phone ringing all day</h1>
+  <p class="lead">Kidd Motorcycles is a Harley-Davidson specialist workshop in Morayfield. Every job lived in Dean's head, customers rang constantly to check on their bikes, and the usual workshop booking software did not fit, because bike jobs grow and wait on parts. We built a system around how the workshop actually runs, on his own domain.</p>
+  <div class="hero-actions">
+    <a class="btn primary" href="/audit">Talk to us about your business</a>
+    <a class="btn" href="https://kiddmotorcycles.com.au" target="_blank" rel="noopener">See the live site</a>
+  </div>
+  <div class="facts">
+    <div><b>Client</b><span>Kidd Motorcycles</span></div>
+    <div><b>Industry</b><span>Motorcycle workshop</span></div>
+    <div><b>Area</b><span>Morayfield, QLD</span></div>
+    <div><b>Built</b><span>From scratch, on Google</span></div>
+  </div>
+</div></header>
+
+<section><div class="wrap">
+  <figure class="shot">
+    <div class="bar"><i></i><i></i><i></i><span>kiddmotorcycles.com.au</span></div>
+    <img src="/work/img/kidd-home.jpg" width="1280" height="860" alt="The Kidd Motorcycles homepage, with a Book your bike in button">
+    <figcaption>The new website, built around his own workshop photos, with booking one tap away on every page.</figcaption>
+  </figure>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <div class="eyebrow">What we built</div>
+  <h2>Four parts, working as one system</h2>
+  <div class="grid grid-2" style="margin-top:24px">
+    <div class="card"><span class="num">01</span><h3>A new website</h3><p>A fast, mobile-first site in the workshop's own colours and photos: services, custom builds, how booking works, and where to find them.</p></div>
+    <div class="card"><span class="num">02</span><h3>Drop-off day booking</h3><p>No time slots. Customers pick a morning or afternoon drop-off, add their bike and what it needs, with photos. A daily limit keeps room for the big jobs.</p></div>
+    <div class="card"><span class="num">03</span><h3>A private job page for every customer</h3><p>Each bike gets its own link showing where the job is up to, so customers check their phone instead of ringing the workshop.</p></div>
+    <div class="card"><span class="num">04</span><h3>Quotes and a workshop app</h3><p>Dean builds quotes on his phone, marking items as recommended or can wait. Customers approve them in a tap, and he updates a job's status the same way.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">For his customers</div>
+  <h2>Book it in, approve it, follow it</h2>
+  <div class="split">
+    <ol class="steps">
+      <li><h3>Pick a drop-off day online</h3><p>Morning or afternoon, plus the bike, what it needs and a few photos. No phone tag to get booked in.</p></li>
+      <li><h3>Approve the quote on your phone</h3><p>Dean looks the bike over and sends a quote. Approve the recommended work or everything, and nothing extra gets done without an OK.</p></li>
+      <li><h3>Follow the job without calling</h3><p>A private page shows where the bike is up to, from booked in to ready to pick up.</p></li>
+    </ol>
+    <figure class="shot">
+      <div class="bar"><i></i><i></i><i></i><span>Example job page</span></div>
+      <img src="/work/img/kidd-job.jpg" width="640" height="1100" alt="An example Kidd Motorcycles job page with a quote to approve" loading="lazy">
+      <figcaption>An example job page with made-up details. Real ones are private to each customer.</figcaption>
+    </figure>
+  </div>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <div class="split" style="margin-top:0">
+    <div>
+      <div class="eyebrow">For Dean</div>
+      <h2>The workshop, out of his head</h2>
+      <ul class="ticks">
+        <li>Every booking in one place, with drop-off days on his calendar.</li>
+        <li>A daily limit on services, so big jobs and custom builds keep their room.</li>
+        <li>Job status updated in one tap from his phone.</li>
+        <li>Walk-ins and phone bookings added in seconds.</li>
+        <li>Quotes split into recommended and can wait, shown with or without GST.</li>
+        <li>Extra work approved by the customer in writing, before it is done.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>How it is built</h3>
+      <p>The website and the system run on Dean's own Google and Cloudflare accounts, on his own domain, with no monthly software fee on top.</p>
+      <p style="margin-top:12px">Everything lives in his accounts and belongs to him.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="tight band"><div class="wrap" style="text-align:center">
+  <h2>Could this work for your business?</h2>
+  <p class="lead" style="max-width:680px;margin-inline:auto">Every business is different, so we never sell a template. In a free consultation we look at how you run things and tell you what we would build, and what it would cost as a fixed price.</p>
+  <p style="margin-top:22px"><a class="btn primary" href="/audit">Book a free consultation</a></p>
+</div></section>
+
+<footer><div class="wrap foot-inner">
+  <div><strong style="color:var(--white)">Swift Operations</strong><br>ABN 65 805 531 455<br><a href="mailto:info@swiftoperations.com.au">info@swiftoperations.com.au</a></div>
+  <div class="foot-links"><a href="/services">Services</a><a href="/work/">Our work</a><a href="/about">About</a><a href="/insights">Insights</a><a href="/contact">Contact</a><a href="https://desk.swiftoperations.com.au">Client login</a><a href="/privacy">Privacy Policy</a><a href="https://www.facebook.com/profile.php?id=61588880969624" rel="noopener">Facebook</a></div>
+</div></footer>
+<script src="/site.js"></script>
+</body>
+</html>
