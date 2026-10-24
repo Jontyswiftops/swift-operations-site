@@ -145,3 +145,19 @@ footer { background: #1F2A37; }
 .cta-split { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: center; text-align: left; }
 .cta-split img { width: 100%; height: auto; border-radius: 12px; aspect-ratio: 5 / 4; object-fit: cover; display: block; box-shadow: 0 18px 44px rgba(31,42,55,.15); }
 @media (max-width: 860px) { .cta-split { grid-template-columns: 1fr; } }
+
+/* logo mark */
+.logo { display: inline-flex; align-items: center; gap: 10px; }
+.logo-mark { flex: 0 0 30px; display: block; }
+
+/* hero: real work on a laptop and a phone */
+.hero-devices { position: relative; display: block; padding: 0 34px 46px 0; text-decoration: none; }
+.hero-devices .laptop { transition: transform .3s ease; }
+.hero-devices:hover .laptop { transform: translateY(-3px); }
+.laptop-screen { background: #14181d; border-radius: 14px 14px 0 0; padding: 10px 10px 14px; box-shadow: 0 26px 60px rgba(31,42,55,.22); }
+.laptop-screen img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-radius: 4px; }
+.laptop-base { height: 14px; margin: 0 -6%; background: linear-gradient(#e2e4e8, #b8bcc3); border-radius: 0 0 16px 16px; box-shadow: 0 10px 18px rgba(31,42,55,.12); }
+.phone { position: absolute; right: 0; bottom: 18px; width: 30%; background: #14181d; border-radius: 26px; padding: 7px; box-shadow: 0 22px 50px rgba(31,42,55,.3); }
+.phone img { display: block; width: 100%; height: auto; aspect-ratio: 9 / 18; object-fit: cover; object-position: top; border-radius: 20px; }
+.devices-caption { position: absolute; left: 0; bottom: 0; font-size: 13px; color: var(--text-dim); }
+@media (max-width: 900px) { .hero-devices { padding-right: 22px; } .phone { width: 32%; border-radius: 20px; } .phone img { border-radius: 15px; } }
