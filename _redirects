@@ -5,3 +5,5 @@
 /insights/tag/* /insights 301
 /form /audit 301
 /audit/ /audit 301
+/start /audit?src=email 302
+/start/:code /audit?src=:code 302
