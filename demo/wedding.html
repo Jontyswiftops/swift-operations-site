@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mia &amp; Tom | Demo wedding website</title>
+<meta name="description" content="A demo wedding website with online RSVP, made by Swift Operations. Mia and Tom are a fictional couple.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ivory:#FBF7F0;--paper:#fff;--line:#EAE3D6;--ink:#2E3A2F;--muted:#66705F;--sage:#7C8B6F;--sage-d:#5F6E54;--sage-l:#E7ECE1;--gold:#B7791F;--dark:#1F2A37}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:116px}
+body{font-family:Inter,Arial,sans-serif;background:var(--ivory);color:var(--ink);line-height:1.6;font-size:16px}
+img{display:block;max-width:100%}
+a{color:inherit}
+.serif{font-family:Fraunces,Georgia,serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+/* demo bar */
+.demo{position:sticky;top:0;z-index:50;background:var(--dark);color:#E9E6DF;font-size:13.5px}
+.demo .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding-top:4px;padding-bottom:4px}
+.demo b{color:#E2B76A;font-weight:600}
+@media(max-width:600px){.demo .lg{display:none}}
+.demo a.btn{flex:0 0 auto;background:#B7791F;color:#fff;text-decoration:none;font-weight:600;padding:6px 12px;border-radius:6px;white-space:nowrap}
+
+/* nav */
+nav.top{position:sticky;top:48px;z-index:40;background:rgba(251,247,240,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+nav.top .mono{font-family:Fraunces,Georgia,serif;font-style:italic;font-size:22px;text-decoration:none}
+nav.top ul{display:flex;gap:22px;list-style:none;font-size:14.5px;color:var(--muted)}
+nav.top ul a{text-decoration:none}
+nav.top ul a:hover{color:var(--ink)}
+.rsvp-btn{background:var(--sage);color:#fff;text-decoration:none;font-weight:600;font-size:14px;padding:9px 16px;border-radius:6px;border:0;cursor:pointer;font-family:inherit}
+.rsvp-btn:hover{background:var(--sage-d)}
+@media(max-width:760px){nav.top ul{display:none}}
+
+/* hero */
+.hero{position:relative;min-height:calc(100vh - 106px);min-height:calc(100svh - 106px);display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,26,20,.35),rgba(20,26,20,.55))}
+.hero .in{position:relative;z-index:1;padding:60px 20px}
+.kicker{font-size:12.5px;letter-spacing:4px;text-transform:uppercase}
+.hero h1{font-family:Fraunces,Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(56px,11vw,112px);line-height:1;margin:14px 0 12px}
+.hero .when{font-size:clamp(16px,2.4vw,20px)}
+.count{display:flex;justify-content:center;gap:10px;margin:28px 0 30px}
+.count div{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:10px;min-width:78px;padding:10px 8px;backdrop-filter:blur(4px)}
+.count b{display:block;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:30px;line-height:1.1}
+.count span{font-size:12px;letter-spacing:1px;text-transform:uppercase;opacity:.85}
+.hero .rsvp-btn{font-size:16px;padding:13px 26px;background:#fff;color:var(--ink)}
+.hero .rsvp-btn:hover{background:var(--sage-l)}
+.hero small{display:block;margin-top:12px;font-size:13.5px;opacity:.85}
+
+/* sections */
+section.s{padding:88px 0}
+section.alt{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.h{text-align:center;margin-bottom:40px}
+.h .kicker{color:var(--gold)}
+.h h2{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:clamp(32px,5vw,44px);line-height:1.15;margin-top:8px}
+.h p{color:var(--muted);max-width:560px;margin:12px auto 0}
+.sprig{display:block;margin:0 auto 6px}
+
+.story{display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:center}
+.story p{color:var(--muted);margin-bottom:14px;font-size:17px}
+.story p:first-child::first-letter{font-family:Fraunces,Georgia,serif;font-size:52px;float:left;line-height:.9;margin:6px 8px 0 0;color:var(--sage-d)}
+.story .pics{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.story .pics img{border-radius:12px;aspect-ratio:4/5;object-fit:cover;width:100%}
+.story .pics img:last-child{margin-top:34px}
+@media(max-width:760px){.story{grid-template-columns:1fr}}
+
+.timeline{max-width:620px;margin:0 auto;list-style:none;position:relative}
+.timeline::before{content:'';position:absolute;left:92px;top:8px;bottom:8px;width:1px;background:var(--line)}
+.timeline li{display:grid;grid-template-columns:92px 1fr;gap:26px;padding:14px 0;position:relative}
+.timeline li::before{content:'';position:absolute;left:87px;top:24px;width:11px;height:11px;border-radius:50%;background:var(--ivory);border:2px solid var(--sage)}
+.timeline time{font-family:Fraunces,Georgia,serif;font-size:20px;text-align:right;padding-right:6px}
+.timeline b{display:block;font-size:17px}
+.timeline span{color:var(--muted);font-size:15px}
+@media(max-width:600px){.timeline::before{left:76px}.timeline li{grid-template-columns:76px 1fr;gap:22px}.timeline li::before{left:71px}.timeline time{font-size:16px;padding-right:12px}}
+
+.venue{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch}
+.venue img{border-radius:14px;width:100%;height:100%;object-fit:cover;min-height:280px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px}
+.venue .card h3{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:26px}
+.venue .card p{color:var(--muted);margin:6px 0 16px}
+.map{position:relative;height:170px;border-radius:10px;overflow:hidden;background:var(--sage-l);margin-bottom:16px}
+.outline{display:inline-block;border:1px solid var(--sage);color:var(--sage-d);background:transparent;text-decoration:none;font-weight:600;font-size:14px;padding:9px 16px;border-radius:6px;cursor:pointer;font-family:inherit}
+.outline:hover{background:var(--sage-l)}
+@media(max-width:760px){.venue{grid-template-columns:1fr}}
+
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.three .card h3{font-size:18px;font-weight:600}
+.three .card .tag{display:inline-block;font-size:12px;color:var(--sage-d);background:var(--sage-l);padding:3px 9px;border-radius:99px;margin-bottom:10px}
+.three .card p{color:var(--muted);font-size:15px;margin-top:6px}
+@media(max-width:760px){.three{grid-template-columns:1fr}}
+
+.dress{max-width:700px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.dress .card b{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:22px;display:block;margin-bottom:6px}
+.dress .card p{color:var(--muted);font-size:15px}
+@media(max-width:600px){.dress{grid-template-columns:1fr}}
+
+.gallery{columns:3 260px;column-gap:12px}
+.gallery button{display:block;width:100%;margin:0 0 12px;border:0;padding:0;background:none;cursor:zoom-in;border-radius:12px;overflow:hidden;break-inside:avoid}
+.gallery img{width:100%;transition:transform .4s}
+.gallery button:hover img{transform:scale(1.03)}
+.lightbox{position:fixed;inset:0;z-index:90;background:rgba(15,18,15,.9);display:none;align-items:center;justify-content:center;padding:20px}
+.lightbox.on{display:flex}
+.lightbox img{max-height:88vh;border-radius:10px}
+.lightbox button{position:absolute;top:16px;right:18px;background:#fff;border:0;border-radius:50%;width:40px;height:40px;font-size:22px;cursor:pointer}
+
+.well{max-width:620px;margin:0 auto;text-align:center}
+.well p{color:var(--muted);font-size:17px}
+.well .card{margin-top:22px;text-align:left;display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:15px}
+.well .card span{color:var(--muted)}
+
+.faq{max-width:700px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--line);padding:16px 0}
+.faq summary{cursor:pointer;font-weight:600;font-size:17px;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::after{content:'+';font-family:Fraunces,Georgia,serif;font-size:24px;line-height:1;color:var(--sage)}
+.faq details[open] summary::after{content:'\2212'}
+.faq details p{color:var(--muted);margin-top:8px}
+
+/* RSVP */
+.rsvp{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+@media(max-width:860px){.rsvp{grid-template-columns:1fr}}
+form.card label{display:block;font-weight:600;font-size:14.5px;margin:16px 0 6px}
+form.card label:first-of-type{margin-top:0}
+form.card input,form.card select,form.card textarea{width:100%;font:inherit;font-size:16px;padding:11px 12px;border:1px solid var(--line);border-radius:8px;background:var(--ivory);color:var(--ink)}
+form.card input:focus,form.card select:focus,form.card textarea:focus{outline:2px solid var(--sage);outline-offset:0;border-color:var(--sage)}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:relative}
+form.card .choice input{position:absolute;left:0;top:0;width:1px;height:1px;opacity:0;pointer-events:none}
+.choice label{margin:0!important;text-align:center;border:1px solid var(--line);border-radius:8px;padding:12px;cursor:pointer;font-weight:600;background:var(--ivory)}
+.choice input:checked+label{background:var(--sage);border-color:var(--sage);color:#fff}
+.choice input:focus-visible+label{outline:2px solid var(--gold)}
+.if-yes{transition:opacity .2s}
+.if-yes.off{display:none}
+form.card .rsvp-btn{width:100%;margin-top:22px;padding:14px;font-size:16px;background:var(--gold)}
+form.card .rsvp-btn:hover{background:#9C6619}
+.note{font-size:13px;color:var(--muted);margin-top:10px;text-align:center}
+.thanks{display:none;text-align:center;padding:30px 10px}
+.thanks.on{display:block}
+.thanks h3{font-family:Fraunces,Georgia,serif;font-weight:500;font-style:italic;font-size:34px}
+.thanks p{color:var(--muted);margin:8px 0 18px}
+
+.couple{background:var(--dark);color:#E9E6DF;border-radius:14px;padding:24px;border:0}
+.couple .lbl{display:inline-block;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#E2B76A;margin-bottom:6px}
+.couple h3{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:24px;color:#fff}
+.couple p.sub{font-size:14px;color:#B9BCC2;margin:4px 0 16px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.stats div{background:rgba(255,255,255,.06);border-radius:10px;padding:10px;text-align:center}
+.stats b{display:block;font-family:Fraunces,Georgia,serif;font-size:26px;font-weight:500;color:#fff}
+.stats span{font-size:12px;color:#B9BCC2}
+.guests{width:100%;border-collapse:collapse;font-size:14px}
+.guests th{text-align:left;font-weight:500;color:#9BA0A8;font-size:12px;text-transform:uppercase;letter-spacing:.8px;padding:6px 6px 8px 0}
+.guests td{padding:9px 6px 9px 0;border-top:1px solid rgba(255,255,255,.08);vertical-align:top}
+.guests .yes{color:#A8C49A;font-weight:600}
+.guests .no{color:#E39B8F;font-weight:600}
+.guests tr.new td{background:rgba(226,183,106,.14)}
+.guests tr.new td:first-child::after{content:'New';margin-left:8px;font-size:11px;background:#B7791F;color:#fff;border-radius:99px;padding:1px 7px;vertical-align:1px}
+.mail{display:none;margin-top:14px;background:#fff;color:var(--ink);border-radius:10px;padding:12px 14px;font-size:14px;box-shadow:0 10px 26px rgba(0,0,0,.25)}
+.mail.on{display:block;animation:pop .35s ease}
+.mail b{color:var(--gold)}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(max-width:520px){.guests .hide-sm{display:none}}
+
+footer{text-align:center;padding:60px 20px 40px}
+footer .serif{font-style:italic;font-size:34px}
+footer p{color:var(--muted);font-size:14px;margin-top:6px}
+footer .by{margin-top:26px;font-size:13px}
+footer .by a{color:var(--gold);font-weight:600;text-decoration:none}
+
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);opacity:0;pointer-events:none;background:var(--dark);color:#fff;font-size:14px;padding:12px 16px;border-radius:10px;max-width:calc(100% - 32px);transition:.3s;z-index:95}
+.toast.on{opacity:1;transform:translateX(-50%)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="demo"><div class="wrap">
+<span><b>Demo site.</b> <span class="lg">Mia and Tom are made up. </span>Try the RSVP<span class="lg"> to see how it works</span>.</span>
+<a class="btn" href="https://www.etsy.com/listing/4608565397" target="_blank" rel="noopener">Get yours</a>
+</div></div>
+
+<nav class="top"><div class="wrap">
+<a class="mono" href="#top">M &amp; T</a>
+<ul><li><a href="#story">Our story</a></li><li><a href="#day">The day</a></li><li><a href="#venue">Venue</a></li><li><a href="#stay">Stay</a></li><li><a href="#faq">FAQs</a></li></ul>
+<a class="rsvp-btn" href="#rsvp">RSVP</a>
+</div></nav>
+
+<header class="hero" id="top">
+<img src="/img/demo/wedding-hero.jpg" alt="A couple walking hand in hand across a garden lawn">
+<div class="in">
+<div class="kicker">Together with their families</div>
+<h1>Mia &amp; Tom</h1>
+<div class="when">Saturday 20 March 2027 &middot; Wattle Hill Estate</div>
+<div class="count" aria-label="Countdown to the wedding"><div><b id="cd-d">0</b><span>days</span></div><div><b id="cd-h">0</b><span>hours</span></div><div><b id="cd-m">0</b><span>mins</span></div></div>
+<a class="rsvp-btn" href="#rsvp">RSVP now</a>
+<small>Kindly reply by 1 February 2027</small>
+</div>
+</header>
+
+<section class="s" id="story"><div class="wrap">
+<div class="h"><svg class="sprig" width="54" height="28" viewBox="0 0 54 28" aria-hidden="true"><path d="M2 22 C16 18 32 12 52 4" fill="none" stroke="#7C8B6F" stroke-width="1.5"/><g fill="#A9B79B"><ellipse cx="14" cy="17" rx="6" ry="2.6" transform="rotate(-40 14 17)"/><ellipse cx="26" cy="13" rx="6" ry="2.6" transform="rotate(-45 26 13)"/><ellipse cx="38" cy="8" rx="6" ry="2.6" transform="rotate(-50 38 8)"/></g><g fill="#C5CFB8"><ellipse cx="18" cy="21" rx="6" ry="2.6" transform="rotate(20 18 21)"/><ellipse cx="31" cy="16" rx="6" ry="2.6" transform="rotate(15 31 16)"/><ellipse cx="43" cy="11" rx="6" ry="2.6" transform="rotate(10 43 11)"/></g></svg><div class="kicker">Our story</div><h2>Six years, two dogs, one question</h2></div>
+<div class="story">
+<div>
+<p>We met at a mate's barbecue in 2021, when Tom burnt the sausages and Mia offered to take over the tongs. She has been in charge of the barbecue ever since.</p>
+<p>Since then we have moved house twice, adopted Biscuit and Pepper, and driven most of the east coast in a very old campervan. Last winter, on a walk to our favourite lookout, Tom finally asked. Mia said yes before he got the ring out.</p>
+<p>We can't wait to celebrate with the people we love most. Thank you for being part of our story.</p>
+</div>
+<div class="pics"><img src="/img/demo/wedding-g2.jpg" alt="A couple sitting together on a log in a forest" loading="lazy"><img src="/img/demo/wedding-g5.jpg" alt="A couple walking along the water at sunset" loading="lazy"></div>
+</div>
+</div></section>
+
+<section class="s alt" id="day"><div class="wrap">
+<div class="h"><div class="kicker">The day</div><h2>Saturday 20 March</h2><p>Everything happens at Wattle Hill Estate, so once you arrive you're set for the day.</p></div>
+<ol class="timeline">
+<li><time>2:30pm</time><div><b>Guests arrive</b><span>Parking on the lawn by the gate, then follow the lanterns to the garden.</span></div></li>
+<li><time>3:00pm</time><div><b>Ceremony</b><span>Under the old fig tree in the garden. It's short and sweet, we promise.</span></div></li>
+<li><time>3:45pm</time><div><b>Drinks and canapés</b><span>On the terrace while we sneak off for photos.</span></div></li>
+<li><time>5:30pm</time><div><b>Reception</b><span>Dinner, speeches and dancing in the barn.</span></div></li>
+<li><time>11:00pm</time><div><b>Carriages</b><span>Shuttle buses run back to town from 10:30pm.</span></div></li>
+</ol>
+</div></section>
+
+<section class="s" id="venue"><div class="wrap">
+<div class="h"><div class="kicker">Venue</div><h2>Wattle Hill Estate</h2></div>
+<div class="venue">
+<img src="/img/demo/wedding-venue.jpg" alt="An outdoor ceremony set up on a garden lawn" loading="lazy">
+<div class="card">
+<div class="map" aria-hidden="true"><svg width="100%" height="100%" viewBox="0 0 400 170" preserveAspectRatio="xMidYMid slice"><rect width="400" height="170" fill="#E7ECE1"/><path d="M-10 120 C80 100 120 140 210 110 S340 60 410 80" stroke="#fff" stroke-width="14" fill="none"/><path d="M150 -10 C160 50 190 80 210 110 S250 170 260 190" stroke="#fff" stroke-width="9" fill="none"/><path d="M0 40 C60 30 90 60 140 50" stroke="#fff" stroke-width="6" fill="none"/><circle cx="60" cy="140" r="26" fill="#D3DCC8"/><circle cx="330" cy="30" r="34" fill="#D3DCC8"/><path d="M210 92 c-9 0-15 7-15 15 0 11 15 25 15 25 s15-14 15-25 c0-8-6-15-15-15z" fill="#B7791F"/><circle cx="210" cy="107" r="5" fill="#fff"/></svg></div>
+<h3>Wattle Hill Estate</h3>
+<p>Hinterland Road, about an hour from the city. There's plenty of free parking, and shuttles run from town.</p>
+<button class="outline" type="button" data-toast="On your real website, this opens your venue in Google or Apple Maps.">Get directions</button>
+</div>
+</div>
+</div></section>
+
+<section class="s alt" id="stay"><div class="wrap">
+<div class="h"><div class="kicker">Where to stay</div><h2>Make a weekend of it</h2><p>A few favourites close by. Mention our wedding when you book for a better rate.</p></div>
+<div class="three">
+<div class="card"><span class="tag">2 min walk</span><h3>The Cottages at Wattle Hill</h3><p>Six cottages on the estate itself. They book out fast, so get in early.</p></div>
+<div class="card"><span class="tag">10 min drive</span><h3>Ridgeview Guesthouse</h3><p>Cosy rooms with a big breakfast and a view down to the coast.</p></div>
+<div class="card"><span class="tag">25 min drive</span><h3>Town centre motels</h3><p>Plenty of options in town, with the wedding shuttle stopping out front.</p></div>
+</div>
+</div></section>
+
+<section class="s"><div class="wrap">
+<div class="h"><div class="kicker">What to wear</div><h2>Garden formal</h2></div>
+<div class="dress">
+<div class="card"><b>Dress code</b><p>Suits without ties are perfect. Dresses of any length, in any colour except white.</p></div>
+<div class="card"><b>Lawn tip</b><p>The ceremony is on grass, so block heels or flats will save your evening. It can get cool after dark, so bring a layer.</p></div>
+</div>
+</div></section>
+
+<section class="s alt"><div class="wrap">
+<div class="h"><div class="kicker">Gallery</div><h2>A few of our favourites</h2></div>
+<div class="gallery">
+<button type="button"><img src="/img/demo/wedding-g1.jpg" alt="A couple holding hands at their ceremony" loading="lazy"></button>
+<button type="button"><img src="/img/demo/wedding-g4.jpg" alt="A white wedding bouquet" loading="lazy"></button>
+<button type="button"><img src="/img/demo/wedding-g3.jpg" alt="A ring being placed on a hand" loading="lazy"></button>
+<button type="button"><img src="/img/demo/wedding-g5.jpg" alt="A couple walking at sunset" loading="lazy"></button>
+<button type="button"><img src="/img/demo/wedding-g6.jpg" alt="Reception tables set for dinner" loading="lazy"></button>
+<button type="button"><img src="/img/demo/wedding-g2.jpg" alt="A couple sitting in a forest" loading="lazy"></button>
+</div>
+</div></section>
+
+<section class="s"><div class="wrap">
+<div class="well">
+<div class="h" style="margin-bottom:18px"><div class="kicker">Gifts</div><h2>Wishing well</h2></div>
+<p>Having you there is the best gift. If you'd like to give something, we'll have a wishing well on the day, or you can contribute to our honeymoon fund.</p>
+<div class="card"><span>Account name</span><b>M Harris and T Nguyen</b><span>BSB</span><b>000 000</b><span>Account</span><b>0000 0000</b><span>Reference</span><b>Your name</b></div>
+</div>
+</div></section>
+
+<section class="s alt" id="faq"><div class="wrap">
+<div class="h"><div class="kicker">Questions</div><h2>Good to know</h2></div>
+<div class="faq">
+<details><summary>Can I bring a plus one?</summary><p>If your invitation includes a guest, their name will be on it. Pop them in your RSVP so we can save them a seat.</p></details>
+<details><summary>Are kids welcome?</summary><p>We love your little ones, but this one is a grown-ups' celebration. Babes in arms are the exception.</p></details>
+<details><summary>Is there parking?</summary><p>Yes, free parking on the lawn by the gate. If you plan to enjoy a drink, the shuttle is the way to go.</p></details>
+<details><summary>What if I have dietary needs?</summary><p>Let us know in your RSVP and we'll sort it with the caterers.</p></details>
+<details><summary>Will the ceremony be inside if it rains?</summary><p>If the weather turns, the ceremony moves to the barn. We'll update this page on the morning.</p></details>
+</div>
+</div></section>
+
+<section class="s" id="rsvp"><div class="wrap">
+<div class="h"><div class="kicker">RSVP</div><h2>Will you join us?</h2><p>Kindly reply by 1 February 2027. Try it: send a reply and watch it land in the guest list on the right.</p></div>
+<div class="rsvp">
+<form class="card" id="rsvp-form" novalidate>
+<div id="form-body">
+<label>Will you be there?</label>
+<div class="choice">
+<input type="radio" name="att" id="att-yes" value="yes" checked><label for="att-yes">Joyfully yes</label>
+<input type="radio" name="att" id="att-no" value="no"><label for="att-no">Sadly no</label>
+</div>
+<label for="f-name">Your names</label>
+<input id="f-name" name="name" autocomplete="name" placeholder="For example Priya and Dev Shah" required>
+<div class="if-yes" id="if-yes">
+<label for="f-count">How many of you are coming?</label>
+<select id="f-count" name="count"><option>1</option><option selected>2</option><option>3</option><option>4</option></select>
+<label for="f-diet">Any dietary needs?</label>
+<input id="f-diet" name="diet" placeholder="For example one vegetarian, one gluten free">
+<label for="f-song">Song that will get you on the dance floor</label>
+<input id="f-song" name="song" placeholder="For example September">
+</div>
+<label for="f-msg">A note for Mia and Tom</label>
+<textarea id="f-msg" name="msg" rows="3" placeholder="Optional"></textarea>
+<button class="rsvp-btn" type="submit">Send RSVP</button>
+<p class="note">Demo only. Your reply stays on this page and isn't sent anywhere.</p>
+</div>
+<div class="thanks" id="thanks">
+<h3 id="thanks-h">See you there!</h3>
+<p id="thanks-p">Thanks for letting us know. We've added you to the guest list.</p>
+<button class="outline" type="button" id="again">Send another RSVP</button>
+</div>
+</form>
+
+<div class="couple" aria-live="polite">
+<span class="lbl">What Mia and Tom see</span>
+<h3>Your guest list</h3>
+<p class="sub">Every reply lands here straight away, and the couple gets an email each time.</p>
+<div class="stats"><div><b id="st-yes">0</b><span>coming</span></div><div><b id="st-no">0</b><span>can't make it</span></div><div><b id="st-diet">0</b><span>dietary notes</span></div></div>
+<table class="guests"><thead><tr><th>Name</th><th>Reply</th><th>Guests</th><th class="hide-sm">Dietary</th></tr></thead><tbody id="g-body"></tbody></table>
+<div class="mail" id="mail"><b>New RSVP</b><br><span id="mail-t"></span></div>
+</div>
+</div>
+</div></section>
+
+<footer>
+<div class="serif">Mia &amp; Tom</div>
+<p>20 March 2027 &middot; Wattle Hill Estate</p>
+<p class="by">This is a demo wedding website. Want one like it? <a href="https://www.etsy.com/listing/4608565397" target="_blank" rel="noopener">See it on Etsy</a> or visit <a href="/">Swift Operations</a>.</p>
+</footer>
+
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Photo"><button type="button" aria-label="Close">&times;</button><img alt=""></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+  // Countdown to 3pm AEST, 20 March 2027
+  var target = new Date('2027-03-20T15:00:00+10:00').getTime();
+  function tick(){
+    var ms = Math.max(0, target - Date.now());
+    var m = Math.floor(ms / 60000);
+    document.getElementById('cd-d').textContent = Math.floor(m / 1440);
+    document.getElementById('cd-h').textContent = Math.floor(m % 1440 / 60);
+    document.getElementById('cd-m').textContent = m % 60;
+  }
+  tick(); setInterval(tick, 30000);
+
+  // Toast
+  var toast = document.getElementById('toast'), tt;
+  function say(t){ toast.textContent = t; toast.classList.add('on'); clearTimeout(tt); tt = setTimeout(function(){ toast.classList.remove('on'); }, 3200); }
+  document.querySelectorAll('[data-toast]').forEach(function(b){ b.addEventListener('click', function(){ say(b.getAttribute('data-toast')); }); });
+
+  // Lightbox
+  var lb = document.getElementById('lb'), lbi = lb.querySelector('img');
+  document.querySelectorAll('.gallery button').forEach(function(b){
+    b.addEventListener('click', function(){ var i = b.querySelector('img'); lbi.src = i.src; lbi.alt = i.alt; lb.classList.add('on'); });
+  });
+  lb.addEventListener('click', function(e){ if (e.target !== lbi) lb.classList.remove('on'); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') lb.classList.remove('on'); });
+
+  // Guest list (sample guests, fictional)
+  var guests = [
+    { name: 'Jack Morton', yes: true, n: 1, diet: '' },
+    { name: 'Ellie and Sam Ng', yes: true, n: 2, diet: 'Gluten free' },
+    { name: 'Hamish Cole', yes: false, n: 0, diet: '' },
+    { name: 'Rosa Lima', yes: true, n: 1, diet: 'No seafood' },
+    { name: 'Aunty Jo and Uncle Pete', yes: true, n: 2, diet: '' }
+  ];
+  var base = { yes: 81, no: 6, diet: 9 }; // replies already in, beyond the rows shown
+  var body = document.getElementById('g-body');
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function render(newIdx){
+    body.innerHTML = guests.map(function(g, i){
+      return '<tr' + (i === newIdx ? ' class="new"' : '') + '><td>' + esc(g.name) + '</td><td class="' + (g.yes ? 'yes">Yes' : 'no">No') + '</td><td>' + g.n + '</td><td class="hide-sm">' + (g.diet ? esc(g.diet) : '<span style="opacity:.45">None</span>') + '</td></tr>';
+    }).join('');
+    var yes = base.yes, no = base.no, diet = base.diet;
+    guests.forEach(function(g){ if (g.yes) yes += g.n; else no += 1; if (g.diet) diet += 1; });
+    document.getElementById('st-yes').textContent = yes;
+    document.getElementById('st-no').textContent = no;
+    document.getElementById('st-diet').textContent = diet;
+  }
+  render(-1);
+
+  // RSVP form
+  var form = document.getElementById('rsvp-form'), ifYes = document.getElementById('if-yes');
+  form.querySelectorAll('input[name=att]').forEach(function(r){
+    r.addEventListener('change', function(){ ifYes.classList.toggle('off', form.att.value !== 'yes'); });
+  });
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var fName = document.getElementById('f-name'), name = fName.value.trim();
+    if (!name) { fName.focus(); say('Please add your names so the couple knows who replied.'); return; }
+    var yes = form.att.value === 'yes';
+    var g = { name: name.slice(0, 60), yes: yes, n: yes ? +form.count.value : 0, diet: yes ? form.diet.value.trim().slice(0, 40) : '' };
+    guests.unshift(g);
+    render(0);
+    document.getElementById('form-body').style.display = 'none';
+    document.getElementById('thanks').classList.add('on');
+    document.getElementById('thanks-h').textContent = yes ? 'See you there!' : 'We will miss you';
+    document.getElementById('thanks-p').textContent = yes ? 'Thanks for letting us know. Check the guest list to see your reply.' : 'Thanks for letting us know. Your reply is in the guest list.';
+    var mail = document.getElementById('mail');
+    document.getElementById('mail-t').textContent = g.name + (yes ? (g.n === 1 ? ' is coming (1 guest)' : ' are coming (' + g.n + ' guests)') : " can't make it");
+    mail.classList.remove('on'); void mail.offsetWidth; mail.classList.add('on');
+    // On phones the guest list sits under the form, so bring it into view
+    if (window.innerWidth < 860) document.querySelector('.couple').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  document.getElementById('again').addEventListener('click', function(){
+    form.reset(); ifYes.classList.remove('off'); var fName = document.getElementById('f-name');
+    document.getElementById('form-body').style.display = '';
+    document.getElementById('thanks').classList.remove('on');
+    fName.focus();
+  });
+})();
+</script>
+</body>
+</html>
