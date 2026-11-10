@@ -21,6 +21,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=20261024a">
+<style>
+.reel-row { display: grid; grid-template-columns: 1fr 380px; gap: 48px; align-items: center; }
+.reel { margin: 0; }
+.reel video { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; border-radius: 18px; border: 1px solid var(--border); box-shadow: var(--shadow); background: #F1EEE6; }
+.reel figcaption { font-size: 13px; color: var(--text-dim); margin-top: 10px; text-align: center; }
+.reel-list { list-style: none; margin-top: 16px; }
+.reel-list li { position: relative; padding-left: 26px; margin-bottom: 10px; color: var(--text); }
+.reel-list li::before { content: ""; position: absolute; left: 0; top: .55em; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+@media (max-width: 860px) { .reel-row { grid-template-columns: 1fr; gap: 28px; } .reel { max-width: 380px; margin: 0 auto; } }
+</style>
 </head>
 <body>
 <nav class="nav"><div class="wrap nav-inner">
@@ -52,6 +62,24 @@
     <div class="card"><span class="num">08</span><h3>Documents and filing</h3><p>Documents that land in the right folder automatically, named properly, so anyone can find anything in seconds.</p></div>
     <div class="card"><span class="num">09</span><h3>From scratch</h3><p>When nothing off the shelf fits, a system built for your business, owned by you, with no per-user subscription.</p></div>
   </div>
+</div></section>
+
+<section id="example" style="padding-bottom:24px"><div class="wrap reel-row">
+  <div>
+    <div class="eyebrow">See it in action</div>
+    <h2>Quote to paid, without the late nights</h2>
+    <p class="lead">Here is what a quote to invoice system looks like once it is set up.</p>
+    <ul class="reel-list">
+      <li>Build the quote on site in a few taps and send it before you leave.</li>
+      <li>Your customer accepts it from their phone.</li>
+      <li>The job is booked, the invoice goes out and the payment comes in.</li>
+    </ul>
+    <p style="margin-top:22px"><a class="btn primary" href="/audit">Book a free consultation</a></p>
+  </div>
+  <figure class="reel">
+    <video id="reel-quote" muted loop playsinline preload="none" width="720" height="900" poster="/img/reels/quote-to-paid.jpg" data-src="/img/reels/quote-to-paid.mp4" aria-label="Short animation: a quote is built on a phone, sent, accepted by the customer, then booked, invoiced and paid."></video>
+    <figcaption>Example of a quoting setup. Coastline Plumbing is a made-up business.</figcaption>
+  </figure>
 </div></section>
 
 <section id="how"><div class="wrap">
@@ -96,5 +124,23 @@
   <div class="foot-links"><a href="/services">Services</a><a href="/work/">Our work</a><a href="/about">About</a><a href="/insights">Insights</a><a href="/contact">Contact</a><a href="/weddings">Weddings and personal projects</a><a href="/privacy">Privacy Policy</a><a href="https://www.facebook.com/profile.php?id=61588880969624" rel="noopener">Facebook</a></div>
 </div></footer>
 <script src="site.js"></script>
+<script>
+/* The example video loads only when scrolled into view, plays muted on a loop, and pauses when off screen.
+   People who have asked their device for less motion get a still image with play controls instead. */
+(function () {
+  var v = document.getElementById('reel-quote');
+  if (!v) return;
+  var load = function () { if (!v.getAttribute('src')) v.src = v.getAttribute('data-src'); };
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    v.controls = true; v.addEventListener('play', load); v.addEventListener('click', load); load(); return;
+  }
+  new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (e.isIntersecting) { load(); var p = v.play(); if (p && p.catch) p.catch(function () { v.controls = true; }); }
+      else v.pause();
+    });
+  }, { threshold: 0.35 }).observe(v);
+})();
+</script>
 </body>
 </html>
